@@ -1,0 +1,4 @@
+# mesh name: boxMesh_1
+# primitive scorer name: testPSH10
+# iX, iY, iZ, value [uSv]
+0,0,0,1.621941184358702e-06

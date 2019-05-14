@@ -1,0 +1,34 @@
+################################################################################
+# in main.cc
+################################################################################
+#include "G4ScoringManager.hh"
+// Activate UI-command base scorer
+    G4ScoringManager * scManager = G4ScoringManager::GetScoringManager();
+    scManager->SetVerboseLevel(1);
+################################################################################
+# in DetectorConstruction.cc
+################################################################################
+#include "G4ScoringManager.hh"
+#include "G4H10Messenger.hh"
+void DetectorConstruction::ConstructSDandField()
+{
+  G4ScoringManager * scManager = G4ScoringManager::GetScoringManagerIfExist();
+  new G4H10Messenger(scManager);
+}
+################################################################################
+# in CMakeLists.txt
+################################################################################
+# PSH10
+find_package(PSH10)
+include_directories(${PSH10_INCLUDE_DIRS})
+target_link_libraries(example ${PSH10_LIBRARIES})
+################################################################################
+# in User Macros
+################################################################################
+# default unit uSv
+/score/quantity/H10 myH10
+###/score/quantity/H10 myH10 mSv
+###/score/quantity/H10 myH10 Sv
+# filters
+/score/filter/particle Filter gamma
+###/score/filter/particle Filter neutron

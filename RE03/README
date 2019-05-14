@@ -1,0 +1,56 @@
+
+ RE03 - an example modified from Geant4.10.02.p02 example
+ --------------------------------------------------------
+
+ Contact : Li Chuanlong(CIAE) psionic@126.com
+
+1. Introduction
+
+ This example demonstrates how to use UI-command base scoring
+to calculate H*(10). And it is also an application for testing the 
+interpolation of conversion coefficients.
+
+1.1 Geometry and primary particle
+
+ It has just one box in the world volume filled by G4_Galactic.
+No detector in the mass geometry. Particle gun shoots a gamma/neutron(default)
+in the box. Particle's energy is a fuction of its ID for test.
+E=e*pow(10.,id/50.), e is the lower edge energy for conversion coefficients.
+For gamma set e=1.00e-02*MeV; 
+For neutron set e=1.00e-09*MeV.
+Every decade 50 energy points for test. 
+
+1.2 Physics
+
+ The physics list is taken from referenced physics-list QGS_BIC
+in Geant4.
+
+2. Macro files and Mesh
+
+ Use testPSH10.mac, and there is only one mesh box in the marco. The dumped
+result is like testresult.txt. To Print the result of interpolation, 
+uncomment the line in G4PSH10.cc::CalcConvCoeff() and recompile the library. 
+ 
+ // G4cout << pname << " " << x << " MeV, H10_phi " << H10_phi << G4endl;
+
+ All the other macros are reserved for comparing with Geant4 example.
+One can use diff tools to find what is the difference. For example, meld.
+
+3. Units
+
+ The default unit of H*(10) is uSv, and can be changed into mSv or Sv
+by UI command.
+
+/score/quantity/H10 testPSH10 mSv
+
+or
+
+/score/quantity/H10 testPSH10 Sv  
+
+
+
+
+
+
+
+
