@@ -28,7 +28,9 @@
 //
 //
 // $Id: $
-// 
+//
+#include "G4Types.hh"
+
 #ifdef G4MULTITHREADED
 #include "G4MTRunManager.hh"
 #else
@@ -48,11 +50,6 @@
 #ifdef G4UI_USE
 #include "G4UIExecutive.hh"
 #endif
-
-//====================================================================
-// Un-comment this line for user defined score writer
-//    #include "RE03UserScoreWriter.hh"
-//====================================================================
 
 int main(int argc,char** argv)
 {
